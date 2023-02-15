@@ -39,25 +39,25 @@ namespace HopfieldNetwork2
             h1.Activation(input);
             int n = 0;
             int p = 0;
-                
-            for(int i = 0; i < 9; i++)
+
+            for (int i = 0; i < 9; i++)
             {
+
                 if (h1.output[i] == plus[i])
                 {
                     p++;
                 }
-                else if (h1.output[i] == minus[i])
+                if (h1.output[i] == minus[i])
                 {
                     n++;
                 }
             }
+            
+            if (p == 9) return 1;
 
-            if (p > n)
-                return 1;
-            else if (n > p)
-                return 0;
-            else
-                return 2;
+            else if (n == 9) return 2;
+            
+            else return 0;
         }
     }
 }
