@@ -5,18 +5,6 @@ namespace HopfieldNetwork2
 {
     public partial class Form1 : Form
     {
-        int[,] arr2d = new int[9, 9] {
-                   { 0, 0, 2, -2, -2, -2, 2, 0, 2 },
-                   { 0, 0, 0, 0, 0, 0, 0, 2, 0 },
-                   { 2, 0, 0, -2, -2, -2, 2, 0, 2 },
-                   { 2, 0, -2, 0, 2, 2, -2, 0, -2 },
-                   { 2, 0, -2, 2, 0, 2, -2, 0, -2 },
-                   { 2, 0, -2, 2, 2, 0, -2, 2, -2 },
-                   { 2, 0, 2, -2, -2, -2, 0, 0, 2 },
-                   { 0, 2, 0, 0, 0, 0, 0, 0, 0 },
-                   { 2, 0, 2, -2, -2, -2, 2, 0, 0 }
-            };
-        
         int[] invec1 = new int[9] { -1, -1, -1, -1, -1, -1, -1, -1, -1};
         int[] row = new int[9];
 
@@ -25,7 +13,6 @@ namespace HopfieldNetwork2
         public Form1()
         {
             InitializeComponent();
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) 
@@ -168,23 +155,55 @@ namespace HopfieldNetwork2
         private void button1_Click(object sender, EventArgs e)
         {
             hopfieldNetwork = new HopfieldNetwork(invec1);
-            if (hopfieldNetwork.CheckPattern() == 1)
-            {
-                label3.Text = "Plus";
-            }
-            else if (hopfieldNetwork.CheckPattern() == 0)
-            {
-                label3.Text = "Minus";
-            }
-            else
+
+            if (hopfieldNetwork.CheckPattern() == 2)
             {
                 label3.Text = "Pattern not recognized";
             }
+            else if (hopfieldNetwork.CheckPattern() == 1)
+            {
+                checkBox10.BackColor = Color.White;
+                checkBox11.BackColor = Color.Black;
+                checkBox12.BackColor = Color.White;
+                checkBox13.BackColor = Color.Black;
+                checkBox14.BackColor = Color.Black;
+                checkBox15.BackColor = Color.Black;
+                checkBox16.BackColor = Color.White;
+                checkBox17.BackColor = Color.Black;
+                checkBox18.BackColor = Color.White;
+                label3.Text = "Pattern recognized";
+            }
+            else if (hopfieldNetwork.CheckPattern() == 0)
+            {
+                checkBox10.BackColor = Color.White;
+                checkBox11.BackColor = Color.White;
+                checkBox12.BackColor = Color.White;
+                checkBox13.BackColor = Color.Black;
+                checkBox14.BackColor = Color.Black;
+                checkBox15.BackColor = Color.Black;
+                checkBox16.BackColor = Color.White;
+                checkBox17.BackColor = Color.White;
+                checkBox18.BackColor = Color.White;
+                label3.Text = "Pattern recognized";
+            }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (var control in this.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    ((CheckBox)control).Checked = false;
+                    ((CheckBox)control).BackColor = Color.White;
+                }
+            }
         }
     }
 }
