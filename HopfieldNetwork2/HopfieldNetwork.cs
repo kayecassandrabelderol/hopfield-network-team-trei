@@ -44,7 +44,7 @@ namespace HopfieldNetwork2
                 if (h1.output[i] == plus[i])
                     p++;
 
-                if (h1.output[i] == minus[i])
+                else if (h1.output[i] == minus[i])
                     n++;
             }
 
