@@ -5,8 +5,7 @@ namespace HopfieldNetwork2
 {
     public partial class Form1 : Form
     {
-        int[] invec1 = new int[9] { -1, -1, -1, -1, -1, -1, -1, -1, -1};
-        int[] row = new int[9];
+        int[] invec1 = new int[9] { -1, -1, -1, -1, -1, -1, -1, -1, -1 };
 
         HopfieldNetwork hopfieldNetwork;
 
@@ -142,11 +141,6 @@ namespace HopfieldNetwork2
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -156,8 +150,18 @@ namespace HopfieldNetwork2
         {
             hopfieldNetwork = new HopfieldNetwork(invec1);
 
+            
+            
             if (hopfieldNetwork.CheckPattern() == 2)
             {
+                foreach (var control in this.Controls)
+                {
+                    if (control is CheckBox)
+                    {
+                        ((CheckBox)control).Checked = false;
+                        ((CheckBox)control).BackColor = Color.White;
+                    }
+                }
                 label3.Text = "Pattern not recognized";
             }
             else if (hopfieldNetwork.CheckPattern() == 1)
@@ -189,11 +193,6 @@ namespace HopfieldNetwork2
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             foreach (var control in this.Controls)
@@ -204,6 +203,11 @@ namespace HopfieldNetwork2
                     ((CheckBox)control).BackColor = Color.White;
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
